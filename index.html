@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>Velvet Finish | Premium Auto Detailing</title>
+  <!-- Fonts: Display (Playfair Display) + Body (Inter) + Accent (Space Grotesk) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&family=Space+Grotesk:wght@500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0c0c0c;
+      color: #e8e8e8;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    /* ---------- COLORS ---------- */
+    :root {
+      --black: #0a0a0a;
+      --dark-charcoal: #151515;
+      --charcoal: #232323;
+      --silver: #b8b8b8;
+      --white: #fafafa;
+      --offwhite: #f0f0f0;
+      --accent: #d4af37;
+      --accent-soft: #e8d48b;
+      --shadow: 0 30px 50px -15px rgba(0,0,0,0.7);
+      --shadow-sm: 0 8px 20px rgba(0,0,0,0.4);
+      --glass: rgba(255,255,255,0.03);
+      --border-glow: rgba(212, 175, 55, 0.15);
+    }
+
+    h1, h2, h3, .display-font {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    h2 {
+      font-size: 2.8rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-label {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 0.8rem;
+      color: var(--accent);
+      margin-bottom: 4px;
+      display: inline-block;
+    }
+
+    .section-title {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 2.8rem;
+    }
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 70px;
+      height: 3px;
+      background: var(--accent);
+      margin-top: 10px;
+      border-radius: 4px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 38px;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      text-decoration: none;
+      background: var(--white);
+      color: var(--black);
+      box-shadow: var(--shadow-sm);
+      font-family: 'Inter', sans-serif;
+    }
+    .btn-primary {
+      background: var(--white);
+      color: var(--black);
+    }
+    .btn-primary:hover {
+      background: #e0e0e0;
+      transform: translateY(-3px) scale(1.01);
+      box-shadow: 0 20px 35px -8px rgba(0,0,0,0.5);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 1.5px solid rgba(255,255,255,0.3);
+      backdrop-filter: blur(4px);
+    }
+    .btn-outline:hover {
+      background: rgba(255,255,255,0.08);
+      border-color: var(--accent);
+      transform: translateY(-3px);
+    }
+    .btn-accent {
+      background: var(--accent);
+      color: var(--black);
+      font-weight: 700;
+    }
+    .btn-accent:hover {
+      background: #c9a82e;
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 15px 30px -8px rgba(212, 175, 55, 0.3);
+    }
+
+    /* ---------- ANIMATIONS ---------- */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-40px);
+      transition: all 0.7s ease;
+    }
+    .reveal-left.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(40px);
+      transition: all 0.7s ease;
+    }
+    .reveal-right.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* ---------- NAVBAR ---------- */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      background: rgba(10, 10, 10, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      padding: 16px 0;
+      transition: 0.3s;
+    }
+    .navbar .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -0.5px;
+    }
+    .logo span {
+      color: var(--accent);
+    }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9rem;
+      transition: 0.25s;
+      letter-spacing: 0.3px;
+    }
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+    .nav-cta {
+      background: var(--accent);
+      color: #0b0b0b !important;
+      padding: 8px 24px;
+      border-radius: 60px;
+      font-weight: 700;
+    }
+    .nav-cta:hover {
+      background: #e4c04a !important;
+      color: black !important;
+      transform: scale(1.02);
+    }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+    }
+    .hamburger span {
+      width: 28px;
+      height: 2.5px;
+      background: var(--white);
+      border-radius: 4px;
+      transition: 0.2s;
+    }
+
+    /* ---------- HERO ---------- */
+    .hero {
+      background: #0a0a0a;
+      color: white;
+      padding: 20px 0 80px;
+      position: relative;
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 30%, rgba(212,175,55,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 60px;
+      align-items: center;
+      position: relative;
+    }
+    .hero-content h1 {
+      font-size: 4.2rem;
+      line-height: 1.05;
+      margin-bottom: 20px;
+      font-weight: 800;
+    }
+    .hero-content h1 span {
+      color: var(--accent);
+      font-style: italic;
+    }
+    .hero-sub {
+      font-size: 1.2rem;
+      color: #b0b0b0;
+      max-width: 480px;
+      margin-bottom: 36px;
+      font-weight: 300;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin-bottom: 36px;
+    }
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      color: #9a9a9a;
+      font-size: 0.95rem;
+    }
+    .hero-meta i {
+      color: var(--accent);
+      margin-right: 10px;
+    }
+    .hero-image {
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 30px 60px -15px rgba(0,0,0,0.8);
+      background: #1a1a1a;
+      transform: perspective(1000px) rotateY(-2deg);
+      transition: 0.6s;
+    }
+    .hero-image:hover {
+      transform: perspective(1000px) rotateY(0deg);
+    }
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      aspect-ratio: 4/3;
+      transition: 0.6s;
+    }
+    .hero-image:hover img {
+      transform: scale(1.02);
+    }
+
+    /* ---------- SECTIONS ---------- */
+    section {
+      padding: 90px 0;
+    }
+    .section-bg-light {
+      background: var(--offwhite);
+      color: #111;
+    }
+    .section-bg-dark {
+      background: var(--dark-charcoal);
+      color: var(--white);
+    }
+    .section-bg-dark .section-title::after {
+      background: var(--accent);
+    }
+    .section-bg-light .section-title::after {
+      background: var(--accent);
+    }
+
+    /* Services */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      gap: 30px;
+    }
+    .service-card {
+      background: var(--white);
+      padding: 32px 26px;
+      border-radius: 32px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.03);
+      transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      border: 1px solid rgba(0,0,0,0.03);
+      position: relative;
+      overflow: hidden;
+      color: #1a1a1a;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--accent);
+      opacity: 0;
+      transition: 0.4s;
+    }
+    .service-card:hover::before {
+      opacity: 1;
+    }
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 30px 50px -15px rgba(0,0,0,0.12);
+    }
+    .service-icon {
+      font-size: 2.4rem;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+    .service-card h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+    .service-card p {
+      color: #4a4a4a;
+      font-size: 0.9rem;
+      margin: 8px 0 14px;
+    }
+    .service-card ul {
+      list-style: none;
+      margin: 12px 0 18px;
+    }
+    .service-card ul li {
+      font-size: 0.85rem;
+      padding: 4px 0;
+      color: #2e2e2e;
+    }
+    .service-card ul li i {
+      color: var(--accent);
+      width: 20px;
+    }
+    .price-tag {
+      font-weight: 700;
+      font-size: 1.4rem;
+      color: var(--black);
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    /* Pricing */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 30px;
+    }
+    .pricing-card {
+      background: #1e1e1e;
+      border-radius: 36px;
+      padding: 38px 28px;
+      box-shadow: var(--shadow-sm);
+      transition: 0.4s;
+      position: relative;
+      border: 1px solid rgba(255,255,255,0.04);
+      color: #eee;
+    }
+    .pricing-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(212,175,55,0.2);
+      box-shadow: 0 40px 60px -20px rgba(0,0,0,0.6);
+    }
+    .pricing-card.popular {
+      border: 1.5px solid var(--accent);
+      background: #1a1a1a;
+      transform: scale(1.02);
+    }
+    .pricing-card.popular .badge {
+      background: var(--accent);
+      color: #0a0a0a;
+      font-weight: 700;
+      padding: 4px 20px;
+      border-radius: 60px;
+      font-size: 0.7rem;
+      letter-spacing: 0.8px;
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Space Grotesk', sans-serif;
+    }
+    .pricing-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      margin-bottom: 6px;
+    }
+    .pricing-card .price {
+      font-size: 2.6rem;
+      font-weight: 800;
+      color: var(--white);
+      font-family: 'Space Grotesk', sans-serif;
+    }
+    .pricing-card .price small {
+      font-weight: 400;
+      font-size: 1rem;
+      color: #9a9a9a;
+    }
+    .pricing-card ul {
+      list-style: none;
+      margin: 24px 0;
+    }
+    .pricing-card ul li {
+      padding: 6px 0;
+      font-size: 0.95rem;
+    }
+    .pricing-card ul li i {
+      color: var(--accent);
+      margin-right: 14px;
+    }
+
+    /* Gallery */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .gallery-item {
+      border-radius: 28px;
+      overflow: hidden;
+      transition: 0.4s;
+      background: #1a1a1a;
+      box-shadow: var(--shadow-sm);
+      cursor: pointer;
+      position: relative;
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      aspect-ratio: 4/3;
+      transition: 0.6s;
+    }
+    .gallery-item:hover img {
+      transform: scale(1.06);
+    }
+    .gallery-item::after {
+      content: '\f002';
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 2.2rem;
+      background: rgba(0,0,0,0.3);
+      opacity: 0;
+      transition: 0.4s;
+    }
+    .gallery-item:hover::after {
+      opacity: 1;
+    }
+
+    /* Before / After slider */
+    .ba-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+      border-radius: 32px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      aspect-ratio: 16/10;
+      background: #111;
+    }
+    .ba-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+    .ba-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+    .ba-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .ba-after {
+      width: 50%;
+      border-right: 3px solid var(--accent);
+      transition: width 0.1s;
+    }
+    .ba-handle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 44px;
+      height: 44px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #0a0a0a;
+      font-size: 1.2rem;
+      cursor: grab;
+      box-shadow: 0 0 0 4px rgba(212,175,55,0.3);
+      z-index: 10;
+      transition: 0.15s;
+    }
+    .ba-handle:active {
+      cursor: grabbing;
+      transform: translate(-50%, -50%) scale(0.95);
+    }
+    .ba-label {
+      position: absolute;
+      bottom: 20px;
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(6px);
+      padding: 8px 24px;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      letter-spacing: 0.5px;
+      color: white;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .ba-label.before { left: 20px; }
+    .ba-label.after { right: 20px; }
+
+    /* About, Why */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .about-text p {
+      font-size: 1.05rem;
+      color: #d0d0d0;
+      margin-bottom: 18px;
+    }
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .benefit-item {
+      background: #1a1a1a;
+      padding: 30px 20px;
+      border-radius: 28px;
+      text-align: center;
+      border: 1px solid rgba(255,255,255,0.04);
+      transition: 0.3s;
+    }
+    .benefit-item:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+    }
+    .benefit-item i {
+      font-size: 2.4rem;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+    .benefit-item h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+    }
+
+    /* Reviews */
+    .review-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 30px;
+    }
+    .review-card {
+      background: #1a1a1a;
+      padding: 30px 26px;
+      border-radius: 32px;
+      border: 1px solid rgba(255,255,255,0.04);
+    }
+    .review-card .stars {
+      color: var(--accent);
+      margin-bottom: 12px;
+      font-size: 1.1rem;
+    }
+    .review-card p {
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* ============================================================ */
+    /* BOOKING SECTION – clean, visual, NO input fields              */
+    /* ============================================================ */
+    .booking-section {
+      background: #0c0c0c;
+      padding: 90px 0;
+      color: #e8e8e8;
+      border-top: 1px solid rgba(255,255,255,0.04);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .booking-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .booking-content .section-title {
+      color: #fff;
+    }
+    .booking-content .section-title::after {
+      background: var(--accent);
+    }
+    .booking-content p {
+      color: #b0b0b0;
+      font-size: 1.1rem;
+      max-width: 480px;
+      margin-bottom: 32px;
+    }
+    .booking-content .btn-booking {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      padding: 20px 48px;
+      border-radius: 60px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      background: var(--accent);
+      color: #0a0a0a;
+      border: none;
+      cursor: pointer;
+      transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      text-decoration: none;
+      font-family: 'Inter', sans-serif;
+      box-shadow: 0 8px 30px rgba(212, 175, 55, 0.15);
+    }
+    .booking-content .btn-booking:hover {
+      background: #c9a82e;
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 20px 45px -8px rgba(212, 175, 55, 0.3);
+    }
+    .booking-content .btn-booking i {
+      font-size: 1.2rem;
+    }
+    .booking-content .hint {
+      margin-top: 18px;
+      color: #777;
+      font-size: 0.85rem;
+      letter-spacing: 0.3px;
+    }
+    .booking-image {
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 30px 60px -15px rgba(0,0,0,0.7);
+      background: #1a1a1a;
+      transition: 0.5s;
+    }
+    .booking-image:hover {
+      transform: scale(1.01);
+    }
+    .booking-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      aspect-ratio: 4/3;
+    }
+
+    /* Footer */
+    .footer {
+      background: #080808;
+      color: #a0a0a0;
+      padding: 70px 0 30px;
+      border-top: 1px solid rgba(255,255,255,0.03);
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.5fr;
+      gap: 40px;
+    }
+    .footer a {
+      color: #a0a0a0;
+      text-decoration: none;
+      display: block;
+      margin: 8px 0;
+      transition: 0.2s;
+    }
+    .footer a:hover {
+      color: var(--accent);
+    }
+    .footer .logo {
+      font-size: 1.8rem;
+      margin-bottom: 12px;
+    }
+    .footer-bottom {
+      border-top: 1px solid #1a1a1a;
+      margin-top: 40px;
+      padding-top: 30px;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .about-grid { grid-template-columns: 1fr; }
+      .booking-wrapper { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: repeat(2,1fr); }
+      .benefits-grid { grid-template-columns: repeat(2,1fr); }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        background: #0b0b0b;
+        position: absolute;
+        top: 72px;
+        left: 0;
+        width: 100%;
+        padding: 32px 24px;
+        gap: 18px;
+        border-bottom: 1px solid #222;
+      }
+      .nav-links.open { display: flex; }
+      .hamburger { display: flex; }
+      .hero-content h1 { font-size: 2.8rem; }
+      h2 { font-size: 2.2rem; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+      .benefits-grid { grid-template-columns: 1fr 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .pricing-card.popular { transform: scale(1); }
+      .ba-wrapper { aspect-ratio: 4/3; }
+      .booking-content .btn-booking {
+        padding: 16px 36px;
+        font-size: 1rem;
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .benefits-grid { grid-template-columns: 1fr; }
+      .hero-content h1 { font-size: 2.2rem; }
+      .container { padding: 0 16px; }
+      .btn { padding: 14px 24px; font-size: 0.85rem; }
+      .hero-meta { gap: 16px; font-size: 0.8rem; }
+      .booking-content .btn-booking {
+        padding: 14px 28px;
+        font-size: 0.95rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <div class="logo">Velvet<span>Finish</span></div>
+      <div class="nav-links" id="navLinks">
+        <a href="#home">Home</a>
+        <a href="#services">Services</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#about">About</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#booking">Book</a>
+        <a href="#booking" class="nav-cta"><i class="fas fa-calendar-check"></i> Book Now</a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="container hero-grid">
+      <div class="hero-content reveal">
+        <span class="section-label" style="color:var(--accent);">✦ premium auto spa</span>
+        <h1>Ultimate <span>Shine</span> for Your Drive</h1>
+        <p class="hero-sub">Ceramic protection, paint correction, and showroom‑quality finish — crafted for discerning owners.</p>
+        <div class="hero-actions">
+          <a href="#booking" class="btn btn-accent"><i class="fas fa-calendar-check"></i> Book Your Detail</a>
+          <a href="#services" class="btn btn-outline">View Services</a>
+        </div>
+        <div class="hero-meta">
+          <span><i class="fas fa-map-pin"></i> Austin, TX</span>
+          <span><i class="fab fa-whatsapp"></i> (512) 555‑0142</span>
+          <span><i class="fas fa-star" style="color:var(--accent);"></i> 4.9 · 120+ reviews</span>
+        </div>
+      </div>
+      <div class="hero-image reveal-right">
+        <img src="car1.png" alt="Premium car detailing" />
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="section-bg-light">
+    <div class="container">
+      <div class="reveal"><span class="section-label">✦ services</span><h2 class="section-title">Our Detailing</h2></div>
+      <div class="services-grid">
+        <div class="service-card reveal"><div class="service-icon"><i class="fas fa-car"></i></div><h4>Exterior Detailing</h4><p>Restore paint & glass</p><ul><li><i class="fas fa-check"></i> Hand wash & clay</li><li><i class="fas fa-check"></i> Wax & sealant</li></ul><span class="price-tag">$149+</span> <a href="#booking" class="btn btn-primary" style="margin-top:14px;padding:10px 24px;font-size:0.85rem;">Book</a></div>
+        <div class="service-card reveal"><div class="service-icon"><i class="fas fa-couch"></i></div><h4>Interior Deep Clean</h4><p>Leather & fabric</p><ul><li><i class="fas fa-check"></i> Shampoo & steam</li><li><i class="fas fa-check"></i> Odor removal</li></ul><span class="price-tag">$179+</span> <a href="#booking" class="btn btn-primary" style="margin-top:14px;padding:10px 24px;font-size:0.85rem;">Book</a></div>
+        <div class="service-card reveal"><div class="service-icon"><i class="fas fa-spray-can"></i></div><h4>Full Detailing</h4><p>Complete restoration</p><ul><li><i class="fas fa-check"></i> Exterior + interior</li><li><i class="fas fa-check"></i> Engine bay</li></ul><span class="price-tag">$299+</span> <a href="#booking" class="btn btn-primary" style="margin-top:14px;padding:10px 24px;font-size:0.85rem;">Book</a></div>
+        <div class="service-card reveal"><div class="service-icon"><i class="fas fa-sync-alt"></i></div><h4>Paint Correction</h4><p>Remove swirls</p><ul><li><i class="fas fa-check"></i> Multi‑stage polish</li><li><i class="fas fa-check"></i> Gloss enhancement</li></ul><span class="price-tag">$399+</span> <a href="#booking" class="btn btn-primary" style="margin-top:14px;padding:10px 24px;font-size:0.85rem;">Book</a></div>
+        <div class="service-card reveal"><div class="service-icon"><i class="fas fa-shield-virus"></i></div><h4>Ceramic Coating</h4><p>9H nano protection</p><ul><li><i class="fas fa-check"></i> Paint prep</li><li><i class="fas fa-check"></i> 5yr warranty</li></ul><span class="price-tag">$699+</span> <a href="#booking" class="btn btn-primary" style="margin-top:14px;padding:10px 24px;font-size:0.85rem;">Book</a></div>
+        <div class="service-card reveal"><div class="service-icon"><i class="fas fa-wax"></i></div><h4>Wax & Polish</h4><p>Deep gloss</p><ul><li><i class="fas fa-check"></i> Premium carnauba</li><li><i class="fas fa-check"></i> Paint sealant</li></ul><span class="price-tag">$129+</span> <a href="#booking" class="btn btn-primary" style="margin-top:14px;padding:10px 24px;font-size:0.85rem;">Book</a></div>
+        <div class="service-card reveal"><div class="service-icon"><i class="fas fa-lightbulb"></i></div><h4>Headlight Restoration</h4><p>Crystal clear</p><ul><li><i class="fas fa-check"></i> Sand & polish</li><li><i class="fas fa-check"></i> UV sealant</li></ul><span class="price-tag">$79+</span> <a href="#booking" class="btn btn-primary" style="margin-top:14px;padding:10px 24px;font-size:0.85rem;">Book</a></div>
+        <div class="service-card reveal"><div class="service-icon"><i class="fas fa-circle-notch"></i></div><h4>Wheel & Tire</h4><p>Deep clean & dress</p><ul><li><i class="fas fa-check"></i> Iron remover</li><li><i class="fas fa-check"></i> Tire shine</li></ul><span class="price-tag">$89+</span> <a href="#booking" class="btn btn-primary" style="margin-top:14px;padding:10px 24px;font-size:0.85rem;">Book</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing" class="section-bg-dark">
+    <div class="container">
+      <div class="reveal"><span class="section-label">✦ packages</span><h2 class="section-title">Choose Your Detail</h2></div>
+      <div class="pricing-grid">
+        <div class="pricing-card reveal"><h3>Basic</h3><div class="price">$149 <small>/ car</small></div><ul><li><i class="fas fa-check"></i> Exterior wash</li><li><i class="fas fa-check"></i> Interior vacuum</li><li><i class="fas fa-check"></i> Tire dressing</li></ul><a href="#booking" class="btn btn-primary" style="background:var(--white);color:#0a0a0a;">Choose</a></div>
+        <div class="pricing-card popular reveal"><div class="badge">Most Popular</div><h3>Full Detail</h3><div class="price">$299 <small>/ car</small></div><ul><li><i class="fas fa-check"></i> Exterior + interior</li><li><i class="fas fa-check"></i> Clay bar treatment</li><li><i class="fas fa-check"></i> Wax & sealant</li><li><i class="fas fa-check"></i> Engine bay clean</li></ul><a href="#booking" class="btn btn-accent">Book Now</a></div>
+        <div class="pricing-card reveal"><h3>Premium</h3><div class="price">$499 <small>/ car</small></div><ul><li><i class="fas fa-check"></i> Full detail +</li><li><i class="fas fa-check"></i> Paint correction</li><li><i class="fas fa-check"></i> Ceramic coating</li><li><i class="fas fa-check"></i> Interior protection</li></ul><a href="#booking" class="btn btn-primary" style="background:var(--white);color:#0a0a0a;">Get Quote</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery" class="section-bg-light">
+    <div class="container">
+      <div class="reveal"><span class="section-label">✦ portfolio</span><h2 class="section-title">Our Work</h2></div>
+      <div class="gallery-grid">
+        <div class="gallery-item reveal"><img src="car2.png" alt="detailing" /></div>
+        <div class="gallery-item reveal"><img src="car3.png" alt="detailing" /></div>
+        <div class="gallery-item reveal"><img src="car4.png" alt="detailing" /></div>
+        <div class="gallery-item reveal"><img src="car5.png" alt="detailing" /></div>
+        <div class="gallery-item reveal"><img src="car1.png" alt="detailing" /></div>
+        <div class="gallery-item reveal"><img src="car2.png" alt="detailing" /></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BEFORE / AFTER (Slider) -->
+  <section class="section-bg-dark">
+    <div class="container">
+      <div class="reveal"><span class="section-label">✦ transformation</span><h2 class="section-title">Before & After</h2></div>
+      <div class="ba-wrapper reveal">
+        <div class="ba-container" id="baContainer">
+          <div class="ba-image ba-before"><img src="car4.png" alt="Before" /></div>
+          <div class="ba-image ba-after" id="baAfter"><img src="car3.png" alt="After" /></div>
+          <div class="ba-handle" id="baHandle"><i class="fas fa-arrows-alt-h"></i></div>
+          <div class="ba-label before">Before</div>
+          <div class="ba-label after">After</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT + WHY CHOOSE -->
+  <section id="about" class="section-bg-light">
+    <div class="container about-grid">
+      <div class="reveal-left"><span class="section-label">✦ about</span><h2 class="section-title">Velvet Finish</h2><p style="color:#222;">We are obsessive about detail. Using premium products and precision techniques, we deliver showroom-quality finishes. Paint correction, ceramic coating, and interior rejuvenation — every service is performed with care.</p><p style="color:#222;">Trusted by car enthusiasts and luxury owners, we treat your vehicle as our own.</p></div>
+      <div class="benefits-grid">
+        <div class="benefit-item reveal"><i class="fas fa-certificate"></i><h4>Premium Products</h4><p style="color:#aaa;font-size:0.85rem;">German & Swiss‑grade</p></div>
+        <div class="benefit-item reveal"><i class="fas fa-eye"></i><h4>Attention to Detail</h4><p style="color:#aaa;font-size:0.85rem;">Flawless execution</p></div>
+        <div class="benefit-item reveal"><i class="fas fa-user-tie"></i><h4>Experienced Team</h4><p style="color:#aaa;font-size:0.85rem;">Master detailers</p></div>
+        <div class="benefit-item reveal"><i class="fas fa-mobile-alt"></i><h4>Convenient</h4><p style="color:#aaa;font-size:0.85rem;">Mobile or shop</p></div>
+        <div class="benefit-item reveal"><i class="fas fa-gem"></i><h4>Premium Finish</h4><p style="color:#aaa;font-size:0.85rem;">Gloss & protection</p></div>
+        <div class="benefit-item reveal"><i class="fas fa-smile"></i><h4>100% Satisfaction</h4><p style="color:#aaa;font-size:0.85rem;">Guaranteed</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section id="reviews" class="section-bg-dark">
+    <div class="container">
+      <div class="reveal"><span class="section-label">✦ testimonials</span><h2 class="section-title">What Our Clients Say</h2></div>
+      <div class="review-grid">
+        <div class="review-card reveal"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p>"Absolutely flawless. My Porsche looks better than new."</p><strong style="color:var(--accent);">— Alex M.</strong></div>
+        <div class="review-card reveal"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p>"Ceramic coating transformed my car. Worth every penny."</p><strong style="color:var(--accent);">— Jamie L.</strong></div>
+        <div class="review-card reveal"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p>"Interior deep clean removed years of stains. Incredible."</p><strong style="color:var(--accent);">— Sam R.</strong></div>
+        <div class="review-card reveal"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div><p>"Professional, punctual, premium results. Highly recommend."</p><strong style="color:var(--accent);">— Taylor K.</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- BOOK YOUR APPOINTMENT – NO INPUT FIELDS, JUST CTA & IMAGE    -->
+  <!-- ============================================================ -->
+  <section class="booking-section" id="booking">
+    <div class="container booking-wrapper">
+      <!-- LEFT: Content -->
+      <div class="booking-content reveal-left">
+        <span class="section-label">✦ book now</span>
+        <h2 class="section-title" style="color:#fff;">Book Your Appointment</h2>
+        <p>Give your vehicle the care it deserves. Choose your preferred date and service — we'll handle the rest.</p>
+        <a href="#" class="btn-booking">
+          <i class="fas fa-calendar-check"></i> Book Appointment
+        </a>
+        <div class="hint">No commitment · Free consultation · Premium service</div>
+      </div>
+      <!-- RIGHT: Image -->
+      <div class="booking-image reveal-right">
+        <img src="car5.png" alt="Luxury car detailing" />
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div><div class="logo">Velvet<span>Finish</span></div><p style="max-width:280px;color:#888;">Premium auto detailing with obsessive quality. Your car deserves the best.</p></div>
+      <div><h4 style="color:white;">Quick</h4><a href="#services">Services</a><a href="#pricing">Pricing</a><a href="#gallery">Gallery</a></div>
+      <div><h4 style="color:white;">Contact</h4><a><i class="fas fa-phone-alt"></i> (512) 555‑0142</a><a><i class="fab fa-whatsapp"></i> WhatsApp</a><a><i class="fas fa-envelope"></i> info@velvetfinish.com</a></div>
+      <div><h4 style="color:white;">Location</h4><p style="color:#888;">123 Detail Dr, Austin, TX</p><p style="color:#888;">Mon–Sat 8am–6pm</p><div style="display:flex;gap:14px;margin-top:12px;"><a href="#"><i class="fab fa-instagram fa-lg"></i></a><a href="#"><i class="fab fa-facebook fa-lg"></i></a></div></div>
+    </div>
+    <div class="footer-bottom"><p>© 2026 Velvet Finish — Premium Auto Detailing. Demo website.</p></div>
+  </footer>
+
+  <script>
+    // Hamburger
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+    document.querySelectorAll('.nav-links a').forEach(link => link.addEventListener('click', () => navLinks.classList.remove('open')));
+
+    // Scroll Reveal
+    const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15 });
+    reveals.forEach(el => observer.observe(el));
+
+    // Before/After Slider
+    const baContainer = document.getElementById('baContainer');
+    const baAfter = document.getElementById('baAfter');
+    const baHandle = document.getElementById('baHandle');
+    let isDragging = false;
+
+    const updateSlider = (x) => {
+      const rect = baContainer.getBoundingClientRect();
+      let pos = (x - rect.left) / rect.width;
+      pos = Math.min(1, Math.max(0, pos));
+      baAfter.style.width = (pos * 100) + '%';
+      baHandle.style.left = (pos * 100) + '%';
+    };
+
+    baHandle.addEventListener('mousedown', (e) => { isDragging = true; e.preventDefault(); });
+    document.addEventListener('mousemove', (e) => { if (isDragging) updateSlider(e.clientX); });
+    document.addEventListener('mouseup', () => { isDragging = false; });
+
+    baHandle.addEventListener('touchstart', (e) => { isDragging = true; e.preventDefault(); });
+    document.addEventListener('touchmove', (e) => { if (isDragging) updateSlider(e.touches[0].clientX); });
+    document.addEventListener('touchend', () => { isDragging = false; });
+  </script>
+</body>
+</html> 
